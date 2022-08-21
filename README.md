@@ -1,5 +1,4 @@
-# Circadian_Energy
-R script to calculate circadian energy and relative amplitude based on accelerometer data
+Circadian energy
 
 ## Software requirement
 All analysis were implemented in R4.1.2. 
