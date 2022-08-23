@@ -321,6 +321,7 @@ npar_act = as.data.frame(npa)
 
 # calculate circadian energy by SSA
 ssa_cc_energy = c()
+aac = c()
 for (i in 1:num_samp){
     act = act_data_list[[i]]
     # SSA circadian component
@@ -328,8 +329,9 @@ for (i in 1:num_samp){
     cc <- Rssa::reconstruct(s.act, groups = list(c(2,3)))
     cc = cc$F1
     ssa_cc_energy[i] = sum(contributions(s.act)[2:3])
+    aac[i] = mean(act$activity, na.rm=T)
 }
-scale_aac = npar_act$M10/10^floor(log10(max(npar_act$M10)))
+scale_aac = aac/10^floor(log10(max(aac)))
 adj_ce = ssa_cc_energy/scale_aac
 
 write.csv(adj_ce, file="./results/circadian_energy.csv", row.names=F)
