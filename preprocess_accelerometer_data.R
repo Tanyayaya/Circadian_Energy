@@ -7,6 +7,7 @@ for (i in 1:length(act_files)){
   file = act_files[i]
   data = read.csv(paste(act_file_path, file, sep='/'),header=TRUE,
                   colClasses = c("character","numeric"))
+  colnames(data) = c("time","act")
   data$time = as.POSIXct(data$time)
   act_data_list[[file]] = data
 }
